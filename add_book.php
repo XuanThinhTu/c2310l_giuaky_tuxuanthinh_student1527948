@@ -20,15 +20,10 @@
         <select name="category_name" required>
             <option value="">Select a category</option>
             <?php
-            // Fetching categories from the database
-            $sql = "SELECT category_name FROM categories";
-            $result = $conn->query($sql);
-            if ($result->num_rows > 0) {
-                while ($row = $result->fetch_assoc()) {
-                    echo "<option value='".$row['category_name']."'>".$row['category_name']."</option>";
-                }
-            } else {
-                echo "<option value=''>No categories available</option>";
+            // Các thể loại cố định đã được lưu trong danh sách
+            $categories = ['Fiction', 'Non-Fiction', 'Science Fiction', 'Biography', 'History', 'Psychology', 'Mystery', 'Romance', 'Horror'];
+            foreach ($categories as $category) {
+                echo "<option value='$category'>$category</option>";
             }
             ?>
         </select>

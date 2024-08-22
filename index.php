@@ -20,11 +20,10 @@
             <th>Actions</th>
         </tr>
         <?php
-        // Cập nhật truy vấn SQL để lấy tên danh mục từ bảng categories
-        $sql = "SELECT books.id, books.title, authors.author_name, categories.category_name, books.publisher, books.publish_year, books.quantity
+        // Truy vấn dữ liệu từ bảng books và authors
+        $sql = "SELECT books.id, books.title, authors.author_name, books.category_name, books.publisher, books.publish_year, books.quantity
                 FROM books
-                JOIN authors ON books.author_id = authors.id
-                JOIN categories ON books.category_id = categories.id";
+                JOIN authors ON books.author_id = authors.id";
         $result = $conn->query($sql);
 
         if ($result->num_rows > 0) {

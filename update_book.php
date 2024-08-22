@@ -5,7 +5,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $id = $_POST['id'];
     $title = $_POST['title'];
     $author_name = $_POST['author_name'];
-    $category_id = $_POST['category_id'];  // Sử dụng category_id thay vì category_name
+    $category_name = $_POST['category_name'];
     $publisher = $_POST['publisher'];
     $publish_year = $_POST['publish_year'];
     $quantity = $_POST['quantity'];
@@ -29,10 +29,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Update book data
-    $update_book = "UPDATE books SET title = ?, author_id = ?, category_id = ?, publisher = ?, publish_year = ?, quantity = ?
+    $update_book = "UPDATE books SET title = ?, author_id = ?, category_name = ?, publisher = ?, publish_year = ?, quantity = ?
                     WHERE id = ?";
     $stmt = $conn->prepare($update_book);
-    $stmt->bind_param("siissii", $title, $author_id, $category_id, $publisher, $publish_year, $quantity, $id);
+    $stmt->bind_param("sisssii", $title, $author_id, $category_name, $publisher, $publish_year, $quantity, $id);
 
     if ($stmt->execute()) {
         echo "Book updated successfully.";

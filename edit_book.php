@@ -42,19 +42,12 @@
         <input type="text" name="author_name" value="<?php echo $book['author_name']; ?>" required><br><br>
 
         <label>Category:</label>
-        <select name="category_id" required>
-            <option value="">Select a category</option>
+        <select name="category_name" required>
             <?php
-            // Fetch categories from the database
-            $sql = "SELECT id, category_name FROM categories";
-            $result = $conn->query($sql);
-            if ($result->num_rows > 0) {
-                while ($row = $result->fetch_assoc()) {
-                    $selected = $row['id'] == $book['category_id'] ? 'selected' : '';
-                    echo "<option value='{$row['id']}' $selected>{$row['category_name']}</option>";
-                }
-            } else {
-                echo "<option value=''>No categories available</option>";
+            $categories = ['Fiction', 'Non-Fiction', 'Science Fiction', 'Biography', 'History', 'Psychology', 'Mystery', 'Romance', 'Horror'];
+            foreach ($categories as $category) {
+                $selected = ($category == $book['category_name']) ? 'selected' : '';
+                echo "<option value='$category' $selected>$category</option>";
             }
             ?>
         </select>
