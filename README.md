@@ -1,17 +1,13 @@
 mysql
 
-CREATE DATABASE aptech_midterm_tuthinh;
+CREATE DATABASE aptech_midterm_tuxuanthinh;
 
-USE aptech_midterm_tuthinh;
+USE aptech_midterm_tuxuanthinh;
 
 CREATE TABLE authors (
     id INT AUTO_INCREMENT PRIMARY KEY,
     author_name VARCHAR(255) NOT NULL,
     book_numbers INT DEFAULT 0
-);
-
-CREATE TABLE categories (
-    category_name VARCHAR(255) PRIMARY KEY
 );
 
 CREATE TABLE books (
